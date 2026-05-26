@@ -29,7 +29,7 @@ if ($hassiteconfig) {
     $settings = new admin_settingpage('tool_badgeexpiry', get_string('pluginname', 'tool_badgeexpiry'));
 
     $settings->add(new admin_setting_configcheckbox(
-        'tool_badgeexpiry/enable',
+        'tool_badgeexpiry/enabled',
         get_string('enablebadgeexpiry', 'tool_badgeexpiry'),
         get_string('enablebadgeexpiry_desc', 'tool_badgeexpiry'),
         0
