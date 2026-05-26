@@ -29,5 +29,5 @@ $plugin->component    = 'tool_badgeexpiry';
 $plugin->release      = '1.0';
 $plugin->version      = 2026052200;
 $plugin->requires     = 2024100700;
-$plugin->supported    = [405, 502];
+$plugin->supported    = [405, 501];
 $plugin->maturity     = MATURITY_STABLE;
