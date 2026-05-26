@@ -54,6 +54,17 @@ final class helper_test extends \advanced_testcase {
         $this->resetAfterTest();
         $CFG->enablebadges = true;
         set_config('enabled', false, 'tool_badgeexpiry');
+        // Add a badge that would be expired to check that it is not returned when notifications are disabled.
+        $course = self::getDataGenerator()->create_course();
+        /** @var core_badges_generator $bgen */
+        $bgen = $this->getDataGenerator()->get_plugin_generator('core_badges');
+        $badge = $bgen->create_badge(['courseid' => $course->id, 'expiredate' => time() - 3600, 'expireperiod' => 0]);
+        $recipient = self::getDataGenerator()->create_user();
+        self::getDataGenerator()->enrol_user($recipient->id, $course->id);
+        $bgen->create_issued_badge([
+            'badgeid' => $badge->id,
+            'userid' => $recipient->id,
+        ]);
         $result = helper::get_expired_badges();
         $this->assertEmpty($result, 'Expected no expired badges when notifications are disabled.');
     }
