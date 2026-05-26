@@ -38,6 +38,6 @@ $string['notificationmessage'] = '<p>Hello {$a->recipient},</p>
 <p>It may be there is updated badge available for you. Please check the course "{$a->courselink}" for more details.</p>';
 $string['notificationsubject'] = 'Your badge "{$a->badgename}" has expired';
 
-$string['pluginname'] = 'tool_badgeexpiry';
+$string['pluginname'] = 'Badge expiry notifications';
 
 $string['queuetaskname'] = 'Queue badge expiry notification tasks';
