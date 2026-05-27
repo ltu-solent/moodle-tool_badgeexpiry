@@ -16,6 +16,7 @@
 
 namespace tool_badgeexpiry\task;
 
+use core_user;
 use tool_badgeexpiry\helper;
 
 /**
@@ -56,7 +57,18 @@ class queue_badgeexpiry_notification_tasks extends \core\task\scheduled_task {
             mtrace('No expired badges found to notify.');
             return;
         }
+        $qcount = 0;
         foreach ($records as $record) {
+            // Only notify users if they are still active.
+            $user = core_user::get_user($record->userid);
+            if (!$user || $user->suspended || $user->deleted) {
+                continue;
+            }
+            // Only notify users if they are enrolled on the course.
+            $ucourses  = enrol_get_users_courses($record->userid, true);
+            if (!array_key_exists($record->courseid, $ucourses)) {
+                continue;
+            }
             // Queue a notification task for each record.
             $task = new badgeexpiry_notification_task();
             $task->set_custom_data([
@@ -64,7 +76,12 @@ class queue_badgeexpiry_notification_tasks extends \core\task\scheduled_task {
                 'badgeid' => $record->badgeid,
             ]);
             \core\task\manager::queue_adhoc_task($task);
+            $qcount++;
         }
-        mtrace("Queued $count badge expiry notification tasks.");
+        if ($qcount == 0) {
+            mtrace('No expired badges found to notify.');
+            return;
+        }
+        mtrace("Queued $qcount badge expiry notification tasks.");
     }
 }

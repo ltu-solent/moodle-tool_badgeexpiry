@@ -10,6 +10,8 @@ By default it is not enabled. If you enable it, notifications will only be sent 
 
 If you want to process historical expired badges, you will need to override the plugin setting "expiredsince" with the timestamp you require (Warning: This could flood emails to users).
 
+Suspended, deleted or unenrolled users who had badges issued that have now expired are not notified.
+
 ## Features not implemented
 
 - **Per badge configuration.** The PR allows instructors to set their own preference for sending notifications with bespoke messages. This can't be implemented here as it requires a change to the badge table or a separately managed table. That's out of scope for something that might be temporary.

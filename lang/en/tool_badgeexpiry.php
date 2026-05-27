@@ -35,7 +35,7 @@ $string['messageprovider:badge_expiry_notification'] = 'Badge expiry notificatio
 
 $string['notificationmessage'] = '<p>Hello {$a->recipient},</p>
 <p>Your badge "{$a->badgelink}" on {$a->courselink} expired on {$a->expirydate}.</p>
-<p>It may be there is updated badge available for you. Please check the course "{$a->courselink}" for more details.</p>';
+<p>It may be there is an updated badge available for you. Please check the course "{$a->courselink}" for more details.</p>';
 $string['notificationsubject'] = 'Your badge "{$a->badgename}" has expired';
 
 $string['pluginname'] = 'Badge expiry notifications';

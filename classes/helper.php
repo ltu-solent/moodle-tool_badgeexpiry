@@ -48,7 +48,7 @@ class helper {
             'expireperiod' => $now,
             'expiredsince' => $expiredsince,
         ];
-        $sql = "SELECT b.id badgeid, bi.userid
+        $sql = "SELECT b.id badgeid, bi.userid, b.courseid
         FROM {badge} b
             JOIN {badge_issued} bi ON bi.badgeid = b.id
             JOIN {course} c ON c.id = b.courseid AND c.visible = 1
