@@ -34,8 +34,6 @@ class badgeexpiry_notification_task extends adhoc_task {
      * Execute the task.
      */
     public function execute(): void {
-        global $DB;
-
         $data = $this->get_custom_data();
         if (empty($data->userid) || empty($data->badgeid)) {
             return;

@@ -83,7 +83,7 @@ final class helper_test extends \advanced_testcase {
      * @return void
      */
     public function test_get_expired_badges(int $expiredate, int $expireperiod, int $expectedcount, int $adjusttime): void {
-        global $CFG, $DB;
+        global $CFG;
         $this->resetAfterTest();
         $CFG->enablebadges = true;
         set_config('enabled', true, 'tool_badgeexpiry');
