@@ -139,6 +139,12 @@ final class helper_test extends \advanced_testcase {
                 'expectedcount' => 0,
                 'adjusttime' => 3600, // Move date last checked forward 1 hour to make badge not expired by period.
             ],
+            'badge issued before expired since time' => [
+                'expiredate' => time(), // Now.
+                'expireperiod' => 0,
+                'expectedcount' => 0,
+                'adjusttime' => 7200, // Expired since some future time.
+            ],
         ];
     }
 }
